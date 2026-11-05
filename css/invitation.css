@@ -254,16 +254,26 @@ img {
   gap:18px;
 }
 
+/* KARTU PENGANTIN */
 .profile-card {
-  width:100%;
-  max-width:345px;
-  padding:25px 20px 30px;
-  background:linear-gradient(160deg,#6c2335,#380a16);
-  border:1px solid #ceaa76;
-  border-radius:150px 150px 18px 18px/100px 100px 18px 18px;
-  box-shadow:0 10px 24px #1c05124d;
-  position:relative;
-  overflow:hidden;
+  width: 100%;
+  max-width: 365px;
+  padding: 18px 14px 32px;
+
+  background: linear-gradient(
+    160deg,
+    #6c2335,
+    #380a16
+  );
+
+  border: 1px solid #ceaa76;
+  border-radius:
+    150px 150px 18px 18px /
+    100px 100px 18px 18px;
+
+  box-shadow: 0 10px 24px #1c05124d;
+  position: relative;
+  overflow: hidden;
 }
 
 .profile-card:before {
@@ -275,21 +285,29 @@ img {
   pointer-events:none;
 }
 
+/* BINGKAI FOTO PENGANTIN */
 .photo-wrapper {
-  width:70%;
-  height:270px;
-  margin:0 auto 18px;
-  border:2px solid var(--gold);
-  border-radius:120px 120px 8px 8px;
-  overflow:hidden;
-  background:linear-gradient(#d8b5a4,#8e4757);
+  width: 92%;
+  height: 355px;
+  margin: 0 auto 20px;
+
+  position: relative;
+  overflow: hidden;
+
+  border: 2px solid var(--gold);
+  border-radius: 160px 160px 8px 8px;
+
+  background-color: #761b30;
 }
 
+/* FOTO MEMENUHI BINGKAI */
 .photo-wrapper img {
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  object-position:center bottom;
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center 25%;
 }
 
 .name,.closing-names .gold-text {
@@ -542,11 +560,17 @@ img {
 }
 
 .gift-item {
-  background:var(--paper);
-  color:var(--ink);
-  border-radius:18px;
-  border:1px solid var(--gold);
-  padding:25px 15px;
+  background: linear-gradient(160deg, #6c2335, #380a16);
+  color: #ffffff;
+  border-radius: 18px;
+  border: 1px solid var(--gold);
+  padding: 25px 15px;
+}
+
+.gift-item button {
+  color: #ffffff;
+  background: #5b1623;
+  border: 1px solid var(--gold);
 }
 
 .bank-logo {
@@ -556,14 +580,16 @@ img {
 }
 
 .account-number {
-  font:600 23px 'Playfair Display',serif;
-  letter-spacing:1px;
-  margin:12px 0 4px;
+  font: 600 23px 'Playfair Display', serif;
+  letter-spacing: 1px;
+  margin: 12px 0 4px;
+  color: #ffffff;
 }
 
 .bank-name {
-  margin:0;
-  font-size:14px;
+  margin: 0;
+  font-size: 14px;
+  color: #ffffff;
 }
 
 .closing-wrapper {
@@ -724,5 +750,12 @@ textarea:focus-visible {
 @media (min-width: 481px) {
   .container {
     min-height: 100vh;
+  }
+}
+/* RESPONSIVE HP */
+@media (max-width: 360px) {
+  .photo-wrapper {
+    width: 94%;
+    height: 320px;
   }
 }
