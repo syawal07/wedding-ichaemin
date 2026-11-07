@@ -3,10 +3,36 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <meta name="theme-color" content="#52151c">
+
+  <meta
+    name="description"
+    content="Undangan pernikahan Icha dan Eming"
+  >
 
   <title>Undangan Pernikahan - Icha & Eming</title>
+
   <link rel="stylesheet" href="./css/style.css">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    rel="preload"
+    href="./assets/bg-transparan.png"
+    as="image"
+  >
 </head>
 
 <body>
@@ -14,97 +40,199 @@
   <!-- PRELOADER -->
   <div id="preloader">
     <div class="preloader-content">
-      <div class="preloader-initials">I & E</div>
+      <div class="preloader-initials">
+        I &amp; E
+      </div>
       <div class="preloader-line"></div>
     </div>
   </div>
 
+  <!-- COVER UNDANGAN -->
   <main class="container">
+
     <section class="hero">
 
-      <!-- Background bunga utama -->
-      <div class="flower-background"
-           aria-hidden="true"></div>
+      <!-- BAGIAN KIRI: FOTO PASANGAN -->
+      <div class="hero-photo-panel">
 
-      <!-- Judul -->
-      <header class="cover-heading anim-pop">
-        <p class="the-wedding">THE WEDDING OF</p>
-        <h1 class="title">
-          Icha <span class="and-symbol">&amp;</span> Eming
-        </h1>
-      </header>
+        <!-- Background floral -->
+        <div
+          class="flower-background"
+          aria-hidden="true"
+        ></div>
 
-      <!-- Foto pasangan -->
-      <div class="cover-photo anim-pop">
-        <img src="./assets/bg2.jpg"
-             alt="Icha dan Eming">
+        <!-- Judul untuk tampilan HP -->
+        <header class="mobile-heading anim-pop">
+          <p class="the-wedding">
+            THE WEDDING OF
+          </p>
+
+          <h1 class="title">
+            Icha
+            <span class="and-symbol">&amp;</span>
+            Eming
+          </h1>
+        </header>
+
+        <!-- Foto pasangan transparan -->
+        <div class="cover-photo anim-pop">
+          <img
+            src="./assets/bg-transparan.png"
+            alt="Foto pasangan Icha dan Eming"
+            fetchpriority="high"
+            decoding="async"
+            width="1024"
+            height="1536"
+          >
+        </div>
+
+        <!-- Rumah adat Bugis -->
+        <img
+          class="bugis-house"
+          src="./assets/Ornate Bugis Stilt House Isolated.png"
+          alt=""
+          aria-hidden="true"
+          decoding="async"
+        >
+
       </div>
 
-      <!-- Informasi tamu -->
-      <div class="invitation-box anim-pop">
-        <p class="to">
-          Kepada Yth:<br>
-          Bapak/Ibu/Saudara/i
-        </p>
+      <!-- BAGIAN KANAN: INFORMASI UNDANGAN -->
+      <div class="hero-info-panel">
 
-        <div class="guest-name-box">
-          <p class="name" id="guestName">
-            Tamu Undangan
+        <div class="info-decoration"
+             aria-hidden="true">
+          <span></span>
+          <span class="ornament-center">✦</span>
+          <span></span>
+        </div>
+
+        <!-- Judul untuk laptop -->
+        <header class="desktop-heading anim-pop">
+
+          <p class="the-wedding">
+            THE WEDDING OF
+          </p>
+
+          <h1 class="title">
+            Icha
+            <span class="and-symbol">&amp;</span>
+            Eming
+          </h1>
+
+        </header>
+
+        <!-- Informasi acara -->
+        <div class="wedding-date anim-pop">
+          <p class="date-label">
+            Save the Date
+          </p>
+
+          <p class="date-value">
+            Sabtu, 14 November 2026
           </p>
         </div>
-      </div>
 
-      <!-- Tombol undangan -->
-      <button id="openBtn"
-              type="button"
-              class="anim-pop">
-        <svg width="18" height="18"
-             viewBox="0 0 24 24"
-             fill="none"
-             stroke="currentColor"
-             stroke-width="2"
-             stroke-linecap="round"
-             stroke-linejoin="round"
+        <!-- Ornamen -->
+        <div class="gold-divider"
              aria-hidden="true">
-          <rect x="2" y="4"
-                width="20" height="16" rx="2"/>
-          <path d="m22 6-10 7L2 6"/>
-        </svg>
-        Buka Undangan
-      </button>
+          <span>✦</span>
+        </div>
 
-      <!-- RUMAH ADAT BUGIS -->
-      <img
-        class="bugis-house"
-        src="./assets/Ornate Bugis Stilt House Isolated.png"
-        alt=""
-        aria-hidden="true"
-      >
+        <!-- Informasi tamu -->
+        <div class="invitation-box anim-pop">
+
+          <p class="to">
+            Kepada Yth.<br>
+            Bapak/Ibu/Saudara/i
+          </p>
+
+          <div class="guest-name-box">
+            <p class="name" id="guestName">
+              Tamu Undangan
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Tombol undangan -->
+        <button
+          id="openBtn"
+          type="button"
+          class="anim-pop"
+          aria-label="Buka undangan pernikahan"
+        >
+
+          <svg
+            width="19"
+            height="19"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect
+              x="2"
+              y="4"
+              width="20"
+              height="16"
+              rx="2"
+            ></rect>
+            <path d="m22 6-10 7L2 6"></path>
+          </svg>
+
+          <span>Buka Undangan</span>
+
+        </button>
+
+        <!-- Dekorasi bawah -->
+        <div class="bottom-ornament"
+             aria-hidden="true">
+          ✦ &nbsp; ♥ &nbsp; ✦
+        </div>
+
+      </div>
 
       <!-- Tombol musik -->
       <button
         id="soundToggle"
         type="button"
-        aria-label="Atur musik">
-      </button>
+        aria-label="Atur musik"
+      ></button>
 
     </section>
+
   </main>
 
-  <!-- JavaScript asli -->
+  <!-- JAVASCRIPT ASLI -->
   <script src="./Index.js"></script>
 
+  <!-- NAMA TAMU DARI URL -->
   <script>
-    const params = new URLSearchParams(
-      window.location.search
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+        const params = new URLSearchParams(
+          window.location.search
+        );
+
+        const namaTamu = params.get("to");
+
+        const guestElement =
+          document.getElementById("guestName");
+
+        if (guestElement) {
+          guestElement.textContent =
+            namaTamu && namaTamu.trim()
+              ? namaTamu.trim()
+              : "Tamu Undangan";
+        }
+      }
     );
-
-    const namaTamu = params.get("to");
-
-    document.getElementById("guestName").textContent =
-      namaTamu && namaTamu.trim()
-        ? namaTamu.trim()
-        : "Tamu Undangan";
   </script>
 
 </body>
