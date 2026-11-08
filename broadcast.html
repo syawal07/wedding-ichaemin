@@ -1,262 +1,1177 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generator Broadcast WA - Umma & Mufliha</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Broadcast Undangan Icha & Eming</title>
+
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f4f7f6;
-      color: #333;
-      padding: 20px;
-      max-width: 800px;
-      margin: 0 auto;
+    :root {
+      --wine: #52151c;
+      --gold: #bf9253;
+      --green: #25d366;
+      --cream: #fff8f4;
     }
-    h2 { color: #151a3b; text-align: center; }
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
-    }
-    textarea {
-      width: 100%;
-      height: 150px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-family: inherit;
-      resize: vertical;
+
+    * {
       box-sizing: border-box;
     }
-    .guest-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+
+    body {
+      margin: 0;
+      padding: 16px;
+      background: #f7eeee;
+      color: #392026;
+      font-family: Arial, sans-serif;
     }
-    .guest-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #fff;
-      padding: 12px 15px;
-      border-radius: 8px;
-      border-left: 4px solid #dca43b;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+    .container {
+      max-width: 850px;
+      margin: auto;
     }
-    .guest-name { font-weight: 600; }
-    .btn-send {
-      background-color: #25D366;
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 0.9rem;
+
+    header {
       text-align: center;
-    }
-    .btn-send.manual {
-      background-color: #f39c12;
-    }
-    .info { font-size: 0.85rem; color: #666; margin-bottom: 15px; }
-    .input-group {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-    .input-group input {
-      flex: 1;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    .btn-add {
-      background-color: #151a3b;
+      background: var(--wine);
       color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 600;
+      padding: 28px 16px;
+      border-radius: 15px;
+      margin-bottom: 20px;
     }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 26px;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 12px #0000000b;
+    }
+
+    h2 {
+      font-size: 19px;
+      color: var(--wine);
+      margin: 0 0 16px;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: #73656b;
+      line-height: 1.6;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d9c8c8;
+      border-radius: 8px;
+      font: inherit;
+      background: white;
+      color: #392026;
+    }
+
+    textarea {
+      min-height: 240px;
+      resize: vertical;
+      line-height: 1.5;
+      font-size: 13px;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: 2px solid var(--gold);
+      border-color: var(--gold);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 11px 15px;
+      font: inherit;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--wine);
+      color: white;
+    }
+
+    .btn-green {
+      background: var(--green);
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      border-radius: 8px;
+      padding: 11px 15px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .btn-outline {
+      background: #fff;
+      border: 1px solid var(--gold);
+      color: var(--wine);
+    }
+
+    .btn-danger {
+      background: #fbe8e8;
+      color: #a52929;
+    }
+
+    .btn-small {
+      padding: 8px 11px;
+      font-size: 12px;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      background: white;
+      padding: 16px 8px;
+      border-radius: 12px;
+      text-align: center;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--wine);
+      font-size: 25px;
+    }
+
+    .stat small {
+      color: #74676b;
+      font-size: 11px;
+    }
+
+    .guest-item {
+      padding: 15px;
+      border: 1px solid #ead9d9;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      background: #fffdfc;
+    }
+
+    .guest-item.sent {
+      border-left: 4px solid #25d366;
+    }
+
+    .guest-item h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      color: var(--wine);
+      overflow-wrap: anywhere;
+    }
+
+    .guest-item p {
+      margin: 0;
+      font-size: 12px;
+      color: #74676b;
+      line-height: 1.6;
+    }
+
+    .guest-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .guest-actions > * {
+      flex: 1;
+      white-space: nowrap;
+    }
+
+    .status-sent {
+      color: #15803d !important;
+      font-weight: bold;
+    }
+
+    .search-section {
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .group-heading {
+      color: var(--wine);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 10px;
+      margin: 25px 0 15px;
+      font-size: 18px;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 25px;
+      color: #777;
+    }
+
     @media (max-width: 600px) {
-      .input-group { flex-direction: column; }
-      .guest-item { flex-direction: column; align-items: flex-start; gap: 10px; }
-      .btn-send { width: 100%; }
+      body {
+        padding: 10px;
+      }
+
+      header h1 {
+        font-size: 23px;
+      }
+
+      .card {
+        padding: 15px;
+      }
+
+      .form-grid,
+      .search-section {
+        grid-template-columns: 1fr;
+      }
+
+      .guest-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .guest-actions > * {
+        width: 100%;
+      }
+
+      .summary {
+        gap: 6px;
+      }
+
+      .stat strong {
+        font-size: 21px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <h2>Dashboard Broadcast WA</h2>
-  
+<div class="container">
+
+  <header>
+    <h1>💌 Broadcast Undangan</h1>
+    <p>
+      The Wedding of Icha & Eming<br>
+      Sabtu, 14 November 2026
+    </p>
+  </header>
+
+  <!-- STATISTIK -->
+  <div class="summary">
+    <div class="stat">
+      <strong id="totalTamu">0</strong>
+      <small>Total Tamu</small>
+    </div>
+
+    <div class="stat">
+      <strong id="totalSent">0</strong>
+      <small>Ditandai Terkirim</small>
+    </div>
+
+    <div class="stat">
+      <strong id="totalPending">0</strong>
+      <small>Belum Dikirim</small>
+    </div>
+  </div>
+
+  <!-- TEMPLATE PESAN -->
   <div class="card">
-    <h3>Template Pesan</h3>
-    <p class="info">Gunakan <strong>{nama}</strong> untuk nama tamu dan <strong>{link}</strong> untuk link undangan.</p>
-    <textarea id="templateMessage">Assalamualaikum Warahmatullahi Wabarakatuh.
+    <h2>📝 Template Pesan WhatsApp</h2>
 
-Bismillahirahmanirrahim.
-Yth. Bapak/Ibu/Saudara/i:
+    <p class="hint">
+      {nama} untuk nama tamu dan
+      {link} untuk link undangan pribadi.
+    </p>
+
+    <textarea id="templateMessage"></textarea>
+
+    <p class="hint">
+      Pesan dapat diedit sesuai kebutuhan.
+      Perubahan disimpan di browser ini.
+    </p>
+  </div>
+
+  <!-- TAMBAH TAMU -->
+  <div class="card">
+    <h2>➕ Tambah Tamu Baru</h2>
+
+    <div class="form-grid">
+      <input
+        id="newGuestName"
+        placeholder="Nama Tamu"
+        type="text"
+      >
+
+      <input
+        id="newGuestWa"
+        placeholder="Nomor WhatsApp (opsional)"
+        type="tel"
+      >
+    </div>
+
+    <div class="form-grid">
+      <select id="newGuestGroup">
+        <option value="Icha">
+          Undangan Icha
+        </option>
+        <option value="Letting MTs/MA">
+          Letting MTs/MA
+        </option>
+      </select>
+
+      <button
+        class="btn-primary"
+        onclick="addGuest()"
+      >
+        + Tambahkan Tamu
+      </button>
+    </div>
+
+    <p class="hint">
+      Nama otomatis dirapikan dengan huruf
+      kapital di awal setiap kata.
+      Nomor WhatsApp boleh dikosongkan.
+    </p>
+  </div>
+
+  <!-- PENCARIAN -->
+  <div class="card">
+    <h2>👥 Daftar Tamu Undangan</h2>
+
+    <div class="search-section">
+      <input
+        id="searchGuest"
+        type="search"
+        placeholder="Cari nama tamu..."
+      >
+
+      <select id="filterGroup">
+        <option value="Semua">Semua Kelompok</option>
+        <option value="Icha">Undangan Icha</option>
+        <option value="Letting MTs/MA">
+          Letting MTs/MA
+        </option>
+      </select>
+    </div>
+
+    <div id="guestList"></div>
+  </div>
+
+  <!-- BACKUP -->
+  <div class="card">
+    <h2>💾 Backup Data Tamu</h2>
+
+    <p class="hint">
+      Simpan backup sebelum mengganti HP
+      atau menghapus data browser.
+    </p>
+
+    <div class="btn-row">
+      <button
+        class="btn-primary"
+        onclick="exportData()"
+      >
+        Download Backup
+      </button>
+
+      <button
+        class="btn-outline"
+        onclick="document.getElementById('importFile').click()"
+      >
+        Import Backup
+      </button>
+    </div>
+
+    <input
+      type="file"
+      id="importFile"
+      accept=".json,application/json"
+      hidden
+    >
+  </div>
+
+</div>
+
+<script>
+"use strict";
+
+/* =====================================
+   1. DATA TAMU ASLI ICHA
+   46 NAMA
+===================================== */
+
+const daftarIcha = [
+  "Unicuuu",
+  "Muharrima",
+  "Fitriani Arief",
+  "Fitriana Arief",
+  "Ayu Amelia",
+  "Nurkaya",
+  "Mufliha",
+  "Azzahrah Yusriyah",
+  "Ilmiana Ihsan",
+  "Verawati",
+  "Nisa Thahir",
+  "Sitti Masita",
+  "Sulaiha",
+  "Hardianti Rukmana",
+  "Aniza",
+  "Imelda Aulia",
+  "Nur Isnaeni",
+  "Owner Siska Chic",
+  "CEO Siska Chic",
+  "Team 001 Siska Chic",
+  "Team 002 Siska Chic",
+  "Team 003 Siska Chic",
+  "Team 004 Siska Chic",
+  "Team 006 Siska Chic",
+  "Team 007 Siska Chic",
+  "Team 008 Siska Chic",
+  "Nur Aisyah",
+  "Yusuf",
+  "Azis Hamsah",
+  "Misbahuddin",
+  "Usman",
+  "Kak Sitti Khadijah",
+  "Kak Muamiratul Mujaddidah",
+  "Rusdi",
+  "Ahmad Firdaus",
+  "Syahrul Ramadhan",
+  "Muammar Ali",
+  "Asmaul Husna",
+  "Husna",
+  "Inrskian",
+  "Namirah Halid",
+  "Miftahul Jannah",
+  "Fitri Ramadhani",
+  "Wahyuni",
+  "Ulfa Nur Amaliah",
+  "Taskirah"
+];
+
+/* =====================================
+   2. LETTING MTs/MA
+   32 NAMA
+===================================== */
+
+const daftarLetting = [
+  "Herfina Asmiranda",
+  "Musdalifah",
+  "Meldayanti",
+  "Nurinayah Tul Khairat",
+  "Nur Afifah Tul Hasanah",
+  "Azikha Nurul Quddus",
+  "Rasmida Putri",
+  "Herawati",
+  "Rani Masrura",
+  "Dewi Reski Maemunah",
+  "Nur Suci Ibrahim",
+  "S Nurkhalisah Putri",
+  "Nur Halifah",
+  "Nur Alam Riani",
+  "Rismawati",
+  "Syahril",
+  "Akbar",
+  "Resa",
+  "Alwi Fahmi",
+  "Kurnia",
+  "Irwansyah",
+  "Hisbul Adillah",
+  "Husnul Fahmi",
+  "Husnul Khatimah",
+  "Aan Amelia",
+  "Syamsul Bahri Muhlis",
+  "Aminah",
+  "Nur Qadri Ramadhani",
+  "M. Hasan Sukri",
+  "M. Husain Sukri",
+  "Rahman",
+  "Gazali"
+];
+
+/* =====================================
+   3. KONFIGURASI
+===================================== */
+
+const baseUrl =
+  "https://syawal07.github.io/wedding-ichaemin/";
+
+const storageKey =
+  "broadcast_icha_eming_v1";
+
+const defaultTemplate = `*Kepada Yth.*
+*Bapak/Ibu/Saudara/i*
 *{nama}*
+*Di Tempat*
 
-Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan memberikan doa restu pada acara pernikahan kami.
+_Assalamu’alaikum Warahmatullahi Wabarakatuh_
 
-Detail acara dapat dilihat melalui tautan undangan berikut:
+Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara pernikahan kami:
+
+💍 *Icha & Eming*
+
+📅 Sabtu, 14 November 2026
+📍 Kediaman Mempelai Wanita, Jl. KH. Ahmad Dahlan, Pangkep.
+
+💌 *Link Undangan:*
 {link}
 
-Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir.
+Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
 
-Wassalamualaikum Warahmatullahi Wabarakatuh.
-Hormat kami,
-*Umma & Mufliha*</textarea>
-  </div>
+Terima kasih. 🤍
 
-  <div class="card" style="border-left: 4px solid #25D366;">
-    <h3>Tambah Tamu Baru</h3>
-    <p class="info">Tambahkan nama tamu yang terlewat di sini.</p>
-    <div class="input-group">
-      <input type="text" id="newGuestName" placeholder="Nama Tamu Baru...">
-      <input type="text" id="newGuestWa" placeholder="Nomor WA (Opsional, cth: 62812...)">
-    </div>
-    <button class="btn-add" onclick="addGuest()">+ Tambahkan ke Daftar</button>
-  </div>
+_Wassalamu’alaikum Warahmatullahi Wabarakatuh_`;
 
-  <div class="card">
-    <h3>Daftar Tamu Undangan (<span id="totalTamu">0</span>)</h3>
-    <div class="guest-list" id="guestList"></div>
-  </div>
+/* =====================================
+   4. BUAT DATA AWAL
+===================================== */
 
-  <script>
-    // 1. Data bawaan (67 Tamu)
-    const tamuDefault = [
-      { nama: "Kakanda Asrul", wa: "" }, { nama: "Kakanda Amirullah", wa: "" },
-      { nama: "Kakanda Arman Malik", wa: "" }, { nama: "Kakanda Nurdianyah", wa: "" },
-      { nama: "Kakanda Ahmad Fahri Ramadhan", wa: "" }, { nama: "Kakanda Maghfiratush Sholihah.", wa: "" },
-      { nama: "Kakanda Yusuf Ariadi Arni & Ny", wa: "" }, { nama: "Kakanda Syawal Saputra", wa: "" },
-      { nama: "Kakanda Muh. Ridwan", wa: "" }, { nama: "Kakanda Muh Afdal", wa: "" },
-      { nama: "Kakanda Fadrul Ali. B", wa: "" }, { nama: "Kakanda Kasri Kasim", wa: "" },
-      { nama: "Kakanda Ahmad Firdaus, M.", wa: "" }, { nama: "Kakanda Muabbir S.T", wa: "" },
-      { nama: "Kakanda Muammar Ali", wa: "" }, { nama: "Kakanda Muhammad Usman & Ny", wa: "" },
-      { nama: "Kakanda Husnul Fahmi, S.T.", wa: "" }, { nama: "Muhammad Irsan Anwar", wa: "" },
-      { nama: "Nurafika", wa: "" }, { nama: "Hidayat Nur Wahid", wa: "" },
-      { nama: "Muh. Akbar", wa: "" }, { nama: "Mar'atuth Thohirah", wa: "" },
-      { nama: "Ibnu Hilal", wa: "" }, { nama: "Khaerul Azimi Sakir", wa: "" },
-      { nama: "Anugrah", wa: "" }, { nama: "Mirnawati Faidatussholeha", wa: "" },
-      { nama: "Ahmad Baqir Hamzah", wa: "" }, { nama: "Muh.Rifqi Al Fauzi", wa: "" },
-      { nama: "Sri Mardani", wa: "" }, { nama: "Muhammad Taufiqurahman", wa: "" },
-      { nama: "Muh. Rizki Aqil", wa: "" }, { nama: "Muhammad Irvan", wa: "" },
-      { nama: "Putri Amanda", wa: "" }, { nama: "Ainun Magfirah", wa: "" },
-      { nama: "Azzahrah Yusriyah Nashiroh", wa: "" }, { nama: "Ahmad Rezky Hidayatullah", wa: "" },
-      { nama: "Achmad Andriany S.Pd., DMM", wa: "" }, { nama: "Saifullah Bonto S.I.P., M.I.Pol", wa: "" },
-      { nama: "Muh. Husain Sukri S.M & Ny", wa: "" }, { nama: "Muh. Hasan Sukri. S.Hut & Ny", wa: "" },
-      { nama: "Nur Alam Riani, SKM.", wa: "" }, { nama: "Rahman & Ny", wa: "" },
-      { nama: "Fitriani S.P.", wa: "" }, { nama: "Dinda Ramadhani", wa: "" },
-      { nama: "Ilham Taufik & Ny", wa: "" }, { nama: "Nurkhalisah Putri S.P.", wa: "" },
-      { nama: "Muh Fauzan Khaeri Jamil", wa: "" }, { nama: "Muhammad Hamdika Hatta", wa: "" },
-      { nama: "Husnul Khatimah Kasim", wa: "" }, { nama: "Dewi Reski Maemuna", wa: "" },
-      { nama: "Aisyah A.", wa: "" }, { nama: "Aisyah H.S", wa: "" },
-      { nama: "Sulfa", wa: "" }, { nama: "Muh Takbir S.M.& Ny", wa: "" },
-      { nama: "Amirullah", wa: "" }, { nama: "Musdalifa", wa: "" },
-      { nama: "Herawati", wa: "" }, { nama: "Meldayanti", wa: "" },
-      { nama: "Nurqadri Ramadhani", wa: "" }, { nama: "Alwi Fahmi", wa: "" },
-      { nama: "Ahmad Yusran", wa: "" }, { nama: "Irwansya S.Ag.,M.Ag", wa: "" },
-      { nama: "Muh. Ardanil", wa: "" }, { nama: "Awaluddin Adam", wa: "" },
-      { nama: "Syariani Syam", wa: "" }, { nama: "Muhammad Syawal", wa: "" },
-      { nama: "PD IPM Barru", wa: "" }
-    ];
+const tamuDefault = [
+  ...daftarIcha.map((nama, index) => ({
+    id: "icha-" + index,
+    nama,
+    wa: "",
+    group: "Icha",
+    sent: false
+  })),
 
-    // 2. Ambil data tamu tambahan dari Local Storage (jika ada)
-    let tamuTambahan = JSON.parse(localStorage.getItem("tamuTambahan")) || [];
-    
-    // 3. Gabungkan data bawaan dan data tambahan
-    let tamu = [...tamuDefault, ...tamuTambahan];
+  ...daftarLetting.map((nama, index) => ({
+    id: "letting-" + index,
+    nama,
+    wa: "",
+    group: "Letting MTs/MA",
+    sent: false
+  }))
+];
 
-    const baseUrl = "https://syawal07.github.io/wedding-ummamufliha/?to=";
-    const guestListContainer = document.getElementById("guestList");
+/* =====================================
+   5. LOCAL STORAGE
+===================================== */
 
-    function renderGuests() {
-      guestListContainer.innerHTML = "";
-      const template = document.getElementById("templateMessage").value;
+function loadData() {
+  try {
+    const saved = localStorage.getItem(storageKey);
 
-      tamu.forEach((guest, index) => {
-        const encodedNameUrl = encodeURIComponent(guest.nama);
-        const linkUndangan = baseUrl + encodedNameUrl;
+    if (saved) {
+      const parsed = JSON.parse(saved);
 
-        let pesanText = template.replace(/{nama}/g, guest.nama).replace(/{link}/g, linkUndangan);
-        const encodedMessage = encodeURIComponent(pesanText);
-        
-        let waLink = guest.wa && guest.wa.trim() !== "" 
-          ? `https://wa.me/${guest.wa}?text=${encodedMessage}` 
-          : `https://wa.me/?text=${encodedMessage}`;
-
-        const div = document.createElement("div");
-        div.className = "guest-item";
-        
-        // Tambahkan tombol "Hapus" hanya untuk tamu tambahan (bukan default)
-        let deleteBtn = index >= tamuDefault.length 
-          ? `<button onclick="deleteGuest(${index})" style="margin-left:10px; background:transparent; border:none; color:red; cursor:pointer; font-weight:bold;">X</button>` 
-          : '';
-
-        div.innerHTML = `
-          <div style="display: flex; flex-direction: column;">
-            <span class="guest-name">${guest.nama} ${deleteBtn}</span>
-            <span style="font-size: 0.75rem; color: #888;">${guest.wa ? '+' + guest.wa : 'Pilih kontak manual di WA'}</span>
-          </div>
-          <a href="${waLink}" target="_blank" class="btn-send ${!guest.wa ? 'manual' : ''}">
-            ${guest.wa ? 'Kirim Langsung' : 'Kirim WA'}
-          </a>
-        `;
-        guestListContainer.appendChild(div);
-      });
-      document.getElementById("totalTamu").innerText = tamu.length;
-    }
-
-    function addGuest() {
-      const nameInput = document.getElementById("newGuestName");
-      const waInput = document.getElementById("newGuestWa");
-      
-      const newName = nameInput.value.trim();
-      const newWa = waInput.value.trim();
-
-      if (newName === "") {
-        alert("Nama tamu tidak boleh kosong!");
-        return;
-      }
-
-      // Tambahkan ke array tamu tambahan
-      tamuTambahan.push({ nama: newName, wa: newWa });
-      
-      // Simpan ke Local Storage
-      localStorage.setItem("tamuTambahan", JSON.stringify(tamuTambahan));
-      
-      // Perbarui array utama
-      tamu = [...tamuDefault, ...tamuTambahan];
-
-      nameInput.value = "";
-      waInput.value = "";
-      
-      renderGuests();
-    }
-
-    // Fitur baru: Menghapus tamu tambahan
-    function deleteGuest(index) {
-      if(confirm("Hapus tamu ini dari daftar?")) {
-        const indexTambahan = index - tamuDefault.length;
-        tamuTambahan.splice(indexTambahan, 1);
-        localStorage.setItem("tamuTambahan", JSON.stringify(tamuTambahan));
-        tamu = [...tamuDefault, ...tamuTambahan];
-        renderGuests();
+      if (
+        parsed &&
+        Array.isArray(parsed.guests)
+      ) {
+        return parsed;
       }
     }
+  } catch (error) {
+    console.warn("Gagal membaca data:", error);
+  }
+
+  return {
+    guests: structuredCloneFallback(tamuDefault),
+    template: defaultTemplate
+  };
+}
+
+function structuredCloneFallback(data) {
+  return JSON.parse(JSON.stringify(data));
+}
+
+let state = loadData();
+
+function saveData() {
+  try {
+    localStorage.setItem(
+      storageKey,
+      JSON.stringify(state)
+    );
+    return true;
+  } catch (error) {
+    alert(
+      "Data gagal disimpan. Periksa penyimpanan browser."
+    );
+    return false;
+  }
+}
+
+/* =====================================
+   6. KAPITALISASI NAMA
+===================================== */
+
+function formatName(text) {
+  return text
+    .trim()
+    .replace(/\s+/g, " ")
+    .split(" ")
+    .map(word => {
+      if (/^\d+$/.test(word)) return word;
+
+      const upper = word.toUpperCase();
+
+      if (["CEO", "MTs", "MA"].includes(word)) {
+        return word;
+      }
+
+      if (upper === "CEO") return "CEO";
+
+      return word
+        .toLowerCase()
+        .replace(
+          /(^|[.'-])(\p{L})/gu,
+          (match, prefix, letter) =>
+            prefix + letter.toUpperCase()
+        );
+    })
+    .join(" ");
+}
+
+/* =====================================
+   7. GENERATE LINK DAN PESAN
+===================================== */
+
+function getInvitationLink(guest) {
+  return baseUrl +
+    "?to=" +
+    encodeURIComponent(guest.nama);
+}
+
+function getMessage(guest) {
+  const template =
+    document.getElementById(
+      "templateMessage"
+    ).value;
+
+  return template
+    .replace(/\{nama\}/g, guest.nama)
+    .replace(
+      /\{link\}/g,
+      getInvitationLink(guest)
+    );
+}
+
+function getWhatsAppLink(guest) {
+  const message =
+    encodeURIComponent(getMessage(guest));
+
+  const number = guest.wa
+    .replace(/\D/g, "")
+    .replace(/^0/, "62");
+
+  if (number) {
+    return `https://wa.me/${number}?text=${message}`;
+  }
+
+  return `https://wa.me/?text=${message}`;
+}
+
+/* =====================================
+   8. RENDER TAMU
+===================================== */
+
+function renderGuests() {
+  const container =
+    document.getElementById("guestList");
+
+  container.replaceChildren();
+
+  const search =
+    document.getElementById(
+      "searchGuest"
+    ).value.toLowerCase();
+
+  const filter =
+    document.getElementById(
+      "filterGroup"
+    ).value;
+
+  const guests = state.guests.filter(guest => {
+    const matchName =
+      guest.nama.toLowerCase().includes(search);
+
+    const matchGroup =
+      filter === "Semua" ||
+      guest.group === filter;
+
+    return matchName && matchGroup;
+  });
+
+  updateStats();
+
+  if (!guests.length) {
+    const empty = document.createElement("p");
+    empty.className = "empty";
+    empty.textContent = "Tamu tidak ditemukan.";
+    container.appendChild(empty);
+    return;
+  }
+
+  ["Icha", "Letting MTs/MA"].forEach(group => {
+    const grouped = guests.filter(
+      guest => guest.group === group
+    );
+
+    if (!grouped.length) return;
+
+    const heading = document.createElement("h3");
+    heading.className = "group-heading";
+
+    heading.textContent =
+      (group === "Icha"
+        ? "❤️ Undangan Icha"
+        : "❤️ Letting MTs/MA") +
+      " (" + grouped.length + ")";
+
+    container.appendChild(heading);
+
+    grouped.forEach(guest => {
+      const item = document.createElement("div");
+
+      item.className =
+        "guest-item" +
+        (guest.sent ? " sent" : "");
+
+      const title = document.createElement("h3");
+      title.textContent = guest.nama;
+
+      const info = document.createElement("p");
+      info.textContent =
+        guest.wa
+          ? "WA: " + guest.wa
+          : "Nomor WA belum diisi";
+
+      const status = document.createElement("p");
+
+      status.textContent =
+        guest.sent
+          ? "✓ Ditandai sudah terkirim"
+          : "Belum dikirim";
+
+      if (guest.sent) {
+        status.className = "status-sent";
+      }
+
+      const actions = document.createElement("div");
+      actions.className = "guest-actions";
+
+      const send = document.createElement("a");
+      send.href = getWhatsAppLink(guest);
+      send.target = "_blank";
+      send.rel = "noopener noreferrer";
+      send.className = "btn-green";
+      send.textContent = "Kirim WA";
+
+      const copy = document.createElement("button");
+      copy.className = "btn-outline btn-small";
+      copy.textContent = "Salin Link";
+      copy.onclick = () =>
+        copyText(getInvitationLink(guest));
+
+      const edit = document.createElement("button");
+      edit.className = "btn-outline btn-small";
+      edit.textContent = "Edit";
+      edit.onclick = () => editGuest(guest.id);
+
+      const mark = document.createElement("button");
+      mark.className = "btn-outline btn-small";
+      mark.textContent =
+        guest.sent ? "Batal Tandai" : "Tandai Terkirim";
+
+      mark.onclick = () => toggleSent(guest.id);
+
+      const remove = document.createElement("button");
+      remove.className = "btn-danger btn-small";
+      remove.textContent = "Hapus";
+      remove.onclick = () => deleteGuest(guest.id);
+
+      actions.append(
+        send,
+        copy,
+        edit,
+        mark,
+        remove
+      );
+
+      item.append(title, info, status, actions);
+      container.appendChild(item);
+    });
+  });
+}
+
+function updateStats() {
+  const total = state.guests.length;
+
+  const sent = state.guests.filter(
+    guest => guest.sent
+  ).length;
+
+  document.getElementById(
+    "totalTamu"
+  ).textContent = total;
+
+  document.getElementById(
+    "totalSent"
+  ).textContent = sent;
+
+  document.getElementById(
+    "totalPending"
+  ).textContent = total - sent;
+}
+
+/* =====================================
+   9. TAMBAH TAMU
+===================================== */
+
+function addGuest() {
+  const nameInput =
+    document.getElementById("newGuestName");
+
+  const waInput =
+    document.getElementById("newGuestWa");
+
+  const groupInput =
+    document.getElementById("newGuestGroup");
+
+  const nama = formatName(nameInput.value);
+  const wa = waInput.value.trim();
+  const group = groupInput.value;
+
+  if (!nama) {
+    alert("Nama tamu tidak boleh kosong.");
+    return;
+  }
+
+  const guest = {
+    id: "custom-" +
+      Date.now() + "-" +
+      Math.random().toString(36).slice(2),
+
+    nama,
+    wa,
+    group,
+    sent: false
+  };
+
+  state.guests.push(guest);
+
+  if (!saveData()) {
+    state.guests.pop();
+    return;
+  }
+
+  nameInput.value = "";
+  waInput.value = "";
+
+  renderGuests();
+
+  alert("Tamu berhasil ditambahkan.");
+}
+
+/* =====================================
+   10. EDIT TAMU
+===================================== */
+
+function editGuest(id) {
+  const guest = state.guests.find(
+    item => item.id === id
+  );
+
+  if (!guest) return;
+
+  const newName = prompt(
+    "Edit nama tamu:",
+    guest.nama
+  );
+
+  if (newName === null) return;
+
+  const nama = formatName(newName);
+
+  if (!nama) {
+    alert("Nama tidak boleh kosong.");
+    return;
+  }
+
+  const newWa = prompt(
+    "Edit nomor WhatsApp (boleh kosong):",
+    guest.wa
+  );
+
+  if (newWa === null) return;
+
+  const oldName = guest.nama;
+  const oldWa = guest.wa;
+
+  guest.nama = nama;
+  guest.wa = newWa.trim();
+
+  if (!saveData()) {
+    guest.nama = oldName;
+    guest.wa = oldWa;
+    return;
+  }
+
+  renderGuests();
+}
+
+/* =====================================
+   11. HAPUS TAMU
+===================================== */
+
+function deleteGuest(id) {
+  const guest = state.guests.find(
+    item => item.id === id
+  );
+
+  if (!guest) return;
+
+  if (
+    !confirm(
+      "Hapus tamu " + guest.nama + "?"
+    )
+  ) return;
+
+  const oldGuests = [...state.guests];
+
+  state.guests = state.guests.filter(
+    item => item.id !== id
+  );
+
+  if (!saveData()) {
+    state.guests = oldGuests;
+    return;
+  }
+
+  renderGuests();
+}
+
+/* =====================================
+   12. STATUS TERKIRIM
+===================================== */
+
+function toggleSent(id) {
+  const guest = state.guests.find(
+    item => item.id === id
+  );
+
+  if (!guest) return;
+
+  guest.sent = !guest.sent;
+
+  if (!saveData()) {
+    guest.sent = !guest.sent;
+    return;
+  }
+
+  renderGuests();
+}
+
+/* =====================================
+   13. SALIN LINK
+===================================== */
+
+async function copyText(text) {
+  try {
+    if (
+      navigator.clipboard &&
+      window.isSecureContext
+    ) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const textarea =
+        document.createElement("textarea");
+
+      textarea.value = text;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+
+      document.body.appendChild(textarea);
+      textarea.select();
+
+      const copied =
+        document.execCommand("copy");
+
+      textarea.remove();
+
+      if (!copied) {
+        throw new Error("Copy gagal");
+      }
+    }
+
+    alert("Link undangan berhasil disalin.");
+  } catch {
+    prompt(
+      "Salin link undangan berikut:",
+      text
+    );
+  }
+}
+
+/* =====================================
+   14. EXPORT BACKUP
+===================================== */
+
+function exportData() {
+  const data = JSON.stringify(
+    state,
+    null,
+    2
+  );
+
+  const blob = new Blob(
+    [data],
+    { type: "application/json" }
+  );
+
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "backup-tamu-icha-eming.json";
+
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  URL.revokeObjectURL(url);
+}
+
+/* =====================================
+   15. IMPORT BACKUP
+===================================== */
+
+document.getElementById(
+  "importFile"
+).addEventListener("change", async function () {
+  const file = this.files[0];
+
+  if (!file) return;
+
+  try {
+    const content = await file.text();
+    const parsed = JSON.parse(content);
+
+    if (
+      !parsed ||
+      !Array.isArray(parsed.guests) ||
+      !parsed.guests.every(g =>
+        g &&
+        typeof g.id === "string" &&
+        typeof g.nama === "string" &&
+        typeof g.wa === "string" &&
+        ["Icha", "Letting MTs/MA"].includes(g.group) &&
+        typeof g.sent === "boolean"
+      )
+    ) {
+      throw new Error("Format backup tidak sesuai");
+    }
+
+    if (
+      !confirm(
+        "Import akan mengganti daftar tamu saat ini. Lanjutkan?"
+      )
+    ) return;
+
+    const oldState = state;
+
+    state = {
+      guests: parsed.guests,
+      template:
+        typeof parsed.template === "string"
+          ? parsed.template
+          : defaultTemplate
+    };
+
+    if (!saveData()) {
+      state = oldState;
+      return;
+    }
+
+    document.getElementById(
+      "templateMessage"
+    ).value = state.template;
 
     renderGuests();
-    document.getElementById("templateMessage").addEventListener("input", renderGuests);
-  </script>
+
+    alert("Backup berhasil dipulihkan.");
+  } catch {
+    alert(
+      "Gagal mengimpor backup. Periksa file JSON."
+    );
+  } finally {
+    this.value = "";
+  }
+});
+
+/* =====================================
+   16. EVENT LISTENER
+===================================== */
+
+document.getElementById(
+  "templateMessage"
+).value = state.template || defaultTemplate;
+
+document.getElementById(
+  "templateMessage"
+).addEventListener("input", function () {
+  state.template = this.value;
+  saveData();
+  renderGuests();
+});
+
+document.getElementById(
+  "searchGuest"
+).addEventListener("input", renderGuests);
+
+document.getElementById(
+  "filterGroup"
+).addEventListener("change", renderGuests);
+
+/* =====================================
+   17. TAMPILKAN DATA
+===================================== */
+
+renderGuests();
+
+</script>
 
 </body>
 </html>
